@@ -195,24 +195,24 @@
         fiesta: [
           "https://raw.githubusercontent.com/Ivanvila19/Ivanvila-portfolio/main/_MG_7902.jpg?raw=true",
           "https://raw.githubusercontent.com/Ivanvila19/Ivanvila-portfolio/main/_MG_7903.jpg?raw=true"
-          "https://github.com/Ivanvila19/Ivanvila-portfolio/blob/main/_MG_7619.jpg?raw=true",
-          "https://github.com/Ivanvila19/Ivanvila-portfolio/blob/main/_MG_8306.jpg?raw=true",
-          "https://github.com/Ivanvila19/Ivanvila-portfolio/blob/main/_MG_8672.jpg?raw=true"
+          
+         
       
         ]
       };
 
       const galleryImages = document.getElementById("galleryImages");
       galleryImages.innerHTML = "";
-      images[category].forEach(image => {
-        const imgElement = document.createElement("img");
-        imgElement.src = image;
-        galleryImages.appendChild(imgElement);
-      });
+      
+      images[category].forEach(url => {
+        const img = document.createElement('img');
+    img.src = url;
+    img.alt = category;
+    galleryImagesDiv.appendChild(img);
+  });
 
-      const modal = document.getElementById("galleryModal");
-      modal.style.display = "flex";
-    }
+      document.getElementById('galleryModal').style.display = 'block';
+}
 
     function closeGallery() {
       const modal = document.getElementById("galleryModal");
