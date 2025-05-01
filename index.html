@@ -11,10 +11,10 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'Roboto', sans-serif; background: #0d0d0d; color: #fff; line-height: 1.6; }
     header {
-     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.3)), url(https://github.com/Ivanvila19/Ivanvila-portfolio/blob/main/IMG-20250103-WA0008.jpg?raw=true);
-  background-size: cover; background-position: center;
-  height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
-  text-align: center;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.3)), url('https://source.unsplash.com/1600x900/?photography');
+      background-size: cover; background-position: center;
+      height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center;
     }
     header h1 {
       font-family: 'Anton', sans-serif;
@@ -137,7 +137,7 @@
   <section id="sobremi">
     <h2>Sobre mí</h2>
      <img src="https://github.com/Ivanvila19/Ivanvila-portfolio/blob/main/IMG_20240326_154649_184.jpg?raw=true" alt="Foto de perfil" style="max-width: 300px; width: 100%; border-radius: 10px; margin-top: 2rem;" />
-    <p>Me llamo Iván Vila Ventura, tengo 20 años. Soy de Madrid y estoy estudiando Comunicación Audiovisual. Me apasiona la fotografía y el cine. Tengo experiencia en fotografía deportiva, sobre todo de fútbol, en retratos, de motor, en fiestas y de paisajes Además trabajo en la productora de cine y publicidad "FinisMundi Producciones".</p>
+    <p>Me llamo Iván Vila Ventura, tengo 20 años. Soy de Madrid y estoy estudiando Comunicación Audiovisual. Me apasiona la fotografía y el cine. Tengo experiencia en fotografía deportiva, sobre todo de fútbol, en retratos, automovilística y paisajista. Además trabajo en la productora de cine y publicidad "FinisMundi Producciones".</p>
   </section>
 
   <section id="portafolio">
@@ -182,7 +182,7 @@
       const images = {
         portraits: [
           "https://raw.githubusercontent.com/Ivanvila19/Ivanvila-portfolio/main/_MG_3786.jpg?raw=true",
-          "https://github.com/Ivanvila19/Ivanvila-portfolio/blob/main/_MG_3772.jpg?raw=true"
+          "https://raw.githubusercontent.com/Ivanvila19/Ivanvila-portfolio/main/_MG_3787.jpg?raw=true"
         ],
         deporte: [
           "https://raw.githubusercontent.com/Ivanvila19/Ivanvila-portfolio/main/_MG_3387.jpg?raw=true",
@@ -195,24 +195,20 @@
         fiesta: [
           "https://raw.githubusercontent.com/Ivanvila19/Ivanvila-portfolio/main/_MG_7902.jpg?raw=true",
           "https://raw.githubusercontent.com/Ivanvila19/Ivanvila-portfolio/main/_MG_7903.jpg?raw=true"
-          
-         
-      
         ]
       };
 
       const galleryImages = document.getElementById("galleryImages");
       galleryImages.innerHTML = "";
-      
-      images[category].forEach(url => {
-        const img = document.createElement('img');
-    img.src = url;
-    img.alt = category;
-    galleryImagesDiv.appendChild(img);
-  });
+      images[category].forEach(image => {
+        const imgElement = document.createElement("img");
+        imgElement.src = image;
+        galleryImages.appendChild(imgElement);
+      });
 
-      document.getElementById('galleryModal').style.display = 'block';
-}
+      const modal = document.getElementById("galleryModal");
+      modal.style.display = "flex";
+    }
 
     function closeGallery() {
       const modal = document.getElementById("galleryModal");
