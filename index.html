@@ -69,7 +69,7 @@
     .modal {
       display: none;
       position: fixed;
-      z-index: 1;
+      z-index: 2000; /* Asegúrate de que el modal esté por encima de otros elementos */
       left: 0;
       top: 0;
       width: 100%;
@@ -89,6 +89,7 @@
       border: 1px solid #888;
       width: 80%;
       max-width: 1200px;
+      position: relative;
     }
 
     .gallery-images img {
@@ -168,19 +169,11 @@
     <p>Puedes escribirme a: <strong>ivanvilaphotography@gmail.com</strong></p>
     <p>O seguirme en redes sociales. @ivanvila_photography</p>
   </section>
+
   <footer>
-    <p>&copy; 2025 Tu Nombre. Todos los derechos reservados.</p>
+    <p>&copy; 2025 Iván Vila. Todos los derechos reservados.</p>
   </footer>
-<div style="margin: 1rem 0;">
-    <a href="https://www.instagram.com/ivanvia_photography" target="_blank" style="color: #fff; text-decoration: none;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ff4c60" viewBox="0 0 24 24">
-        <path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 2 .3 2.5.5.6.3 1.1.7 1.6 1.2.5.5.9 1 .9 1.6.2.5.4 1.3.5 2.5.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.3 2-.5 2.5-.3.6-.7 1.1-1.2 1.6-.5.5-1 .9-1.6.9-.5.2-1.3.4-2.5.5-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-2-.3-2.5-.5-.6-.3-1.1-.7-1.6-1.2-.5-.5-.9-1-.9-1.6-.2-.5-.4-1.3-.5-2.5C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.3-2 .5-2.5.3-.6.7-1.1 1.2-1.6.5-.5 1-.9 1.6-.9.5-.2 1.3-.4 2.5-.5C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.8.4-1.2.8-.4.4-.6.7-.8 1.2-.2.4-.3 1-.4 2.1-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1.1.2 1.7.4 2.1.2.5.4.8.8 1.2.4.4.7.6 1.2.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.8-.4 1.2-.8.4-.4.6-.7.8-1.2.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.8-.8-1.2-.4-.4-.7-.6-1.2-.8-.4-.2-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1zm0 3.2a5.6 5.6 0 1 1 0 11.2 5.6 5.6 0 0 1 0-11.2zm0 1.8a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6zm5.8-1.3a1.3 1.3 0 1 1-2.6 0 1.3 1.3 0 0 1 2.6 0z"/>
-      </svg>
-      <span style="margin-left: 0.5rem;">@ivanvila_photography</span>
-    </a>
-  </div>
-        <p>&copy; 2025 Iván Vila. Todos los derechos reservados.</p>
-  </footer>
+
   <script>
     function openGallery(category) {
       // Imágenes por categoría
@@ -191,7 +184,7 @@
         ],
         deporte: [
           "https://raw.githubusercontent.com/Ivanvila19/Ivanvila-portfolio/main/_MG_3387.jpg?raw=true",
-          "https://raw.githubusercontent.com/Ivanvila19/Ivanvila-portfolio/main/_MG_3397.jpg?raw=true"
+          "https://raw.githubusercontent.com/Ivanvila19/Ivanvila-portfolio/main/_MG_3388.jpg?raw=true"
         ],
         motor: [
           "https://raw.githubusercontent.com/Ivanvila19/Ivanvila-portfolio/main/_MG_5979.jpg?raw=true",
@@ -203,24 +196,35 @@
         ]
       };
 
-      const galleryImagesDiv = document.getElementById('galleryImages');
-      galleryImagesDiv.innerHTML = ''; // Limpiar contenido previo
-
-      images[category].forEach(url => {
-        const img = document.createElement('img');
-        img.src = url;
-        img.alt = category;
-        galleryImagesDiv.appendChild(img);
+      const galleryImages = document.getElementById("galleryImages");
+      galleryImages.innerHTML = "";
+      images[category].forEach(image => {
+        const imgElement = document.createElement("img");
+        imgElement.src = image;
+        galleryImages.appendChild(imgElement);
       });
 
-      // Mostrar el modal
-      document.getElementById('galleryModal').style.display = 'block';
+      const modal = document.getElementById("galleryModal");
+      modal.style.display = "flex";
     }
 
     function closeGallery() {
-      document.getElementById('galleryModal').style.display = 'none';
+      const modal = document.getElementById("galleryModal");
+      modal.style.display = "none";
     }
+
+    window.addEventListener("scroll", () => {
+      const sections = document.querySelectorAll("section");
+      sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        const sectionBottom = section.getBoundingClientRect().bottom;
+        if (sectionTop < window.innerHeight && sectionBottom > 0) {
+          section.classList.add("visible");
+        }
+      });
+    });
   </script>
 </body>
 </html>
+
 
