@@ -69,7 +69,7 @@
     .modal {
       display: none;
       position: fixed;
-      z-index: 2000; /* Asegúrate de que el modal esté por encima de otros elementos */
+      z-index: 2000;
       left: 0;
       top: 0;
       width: 100%;
@@ -94,9 +94,11 @@
 
     .gallery-images img {
       width: 100%;
-      height: auto;
+      max-width: 900px; /* Límite máximo de tamaño para las imágenes */
+      max-height: 80vh; /* No dejar que la imagen se haga demasiado alta */
       margin: 5px;
       transition: transform 0.3s ease;
+      object-fit: contain; /* Asegura que la imagen no se distorsione */
     }
 
     .gallery-images img:hover {
@@ -134,7 +136,7 @@
 
   <section id="sobremi">
     <h2>Sobre mí</h2>
-    <p>Me llamo Iván Vila Ventura, tengo 20 años. Soy de Madrid y estoy estudiando Comunicación Audiovisual. Me apasiona la fotografía y el cine. Tengo experiencia en fotografia deportiva, sobre todo de fútbol, en retratos, automovilistica y paisajista. Además trabajo en la productora de cine y publicidad "FinisMundi Producciones"</p>
+    <p>Me llamo Iván Vila Ventura, tengo 20 años. Soy de Madrid y estoy estudiando Comunicación Audiovisual. Me apasiona la fotografía y el cine. Tengo experiencia en fotografía deportiva, sobre todo de fútbol, en retratos, automovilística y paisajista. Además trabajo en la productora de cine y publicidad "FinisMundi Producciones".</p>
   </section>
 
   <section id="portafolio">
@@ -176,7 +178,6 @@
 
   <script>
     function openGallery(category) {
-      // Imágenes por categoría
       const images = {
         portraits: [
           "https://raw.githubusercontent.com/Ivanvila19/Ivanvila-portfolio/main/_MG_3786.jpg?raw=true",
@@ -226,5 +227,6 @@
   </script>
 </body>
 </html>
+
 
 
